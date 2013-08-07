@@ -125,7 +125,7 @@ var serverFile='http://192.168.1.76/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
         }).done(function(done){
             if(done>0){
                 putPedidoPendiente(done,obj.attr('rel'),obj.children('.des').text(),obj.children('.precio').text(),(obj.parent('ul').attr('class')).substr(4));
-                navigator.notification.alert('Producto Seleccionado',null,'Satisfactorio','Aceptar');
+                navigator.notification.alert('Ha Seleccionado: '+obj.children('.des').text(),null,'Satisfactorio','Aceptar');
             }else{
                 navigator.notification.alert('Error al solicitar el Pedido '+done,null,'Error','Aceptar');
             }
