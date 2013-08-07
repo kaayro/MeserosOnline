@@ -11,7 +11,7 @@ body, html {margin:0;padding:0;width:100%;height:100%;overflow:hidden;}
 #home .left #options li{margin:0;padding:0;overflow: hidden;background: rgba(0, 0, 0, .08);background: #f99015; background: linear-gradient(top, #f99015 0%, #f76c0f 100%); background: -moz-linear-gradient(top, #f99015 0%, #f76c0f 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f99015), color-stop(100%,#f76c0f)); background: -webkit-linear-gradient(top, #f99015 0%,#f76c0f 100%);}
 #home .right{width:30%;height:100%;position:absolute;top:0;left:70%;}
 #home .right #tables{margin:0;padding:0;list-style:none;}
-#home .right #tables li{background: -webkit-linear-gradient(top, #f99015 0%,#f76c0f 100%);margin:2px 0;padding: 10px;text-align:right;color:#fff;font:12pt Arial;}
+#home .right #tables li{background: -webkit-linear-gradient(top, #f99015 0%,#f76c0f 100%);margin:2px 0;padding:15px 10px;text-align:right;color:#fff;font:12pt Arial;}
 #home .right #tables .alert{background: -webkit-linear-gradient(top, #0ff000 0%,#0aa000 100%);margin:2px 0;padding: 10px;text-align:right;color:#fff;font:12pt Arial;}
 #home .right #tables .pending{background: -webkit-linear-gradient(top, #aa0000 0%,#550000 100%);margin:2px 0;padding: 10px;text-align:right;color:#fff;font:12pt Arial;}
 
