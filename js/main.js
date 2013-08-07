@@ -2,7 +2,7 @@ $(function(){
     document.addEventListener("deviceready",function(){
         /* Seleccionar Meseros */
         showMeseros();
-        $(document).hammer().on('tap','#meseros .opt',function(){$('body').attr('mesero',$(this).attr('rel'));$('#meseros').hide();$('#home .options').append('<li>'+$(this).text()+' está atendiendo esta mesa</li>');});
+        $(document).hammer().on('tap','#meseros .opt',function(){$('body').attr('mesero',$(this).attr('rel'));$('#meseros').hide();$('#options').append('<li>'+$(this).text()+' está atendiendo esta mesa</li>');});
         /* Mesas y Ordenes */
         var listenerShowTables = setInterval(function(){showTables()},1500);
         $('#options select').change(function(){openTable($(this).val())});
