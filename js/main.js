@@ -2,9 +2,10 @@ $(function(){
     document.addEventListener("deviceready",function(){
         /* Seleccionar Meseros */
         showMeseros();
-        $(document).hammer().on('tap','#meseros .opt',function(){$('body').attr('mesero',$(this).attr('rel'));$('#meseros').hide();$('#options').append('<li>'+$(this).text()+' está atendiendo esta mesa</li>');});
+        $(document).hammer().on('tap','#meseros .opt',function(){$('body').attr('mesero',$(this).attr('rel'));$('#meseros').hide();$('#options').append('<li>'+$(this).text()+' está atendiendo en este Dispositivo</li>');});
         /* Mesas y Ordenes */
         var listenerShowTables = setInterval(function(){showTables()},1500);
+        var listenerShowOpenedTables = setInterval(function(){showOpenedTables()},1000);
         $('#options select').change(function(){openTable($(this).val())});
         $(document).hammer().on("tap", "#tables li",function(){ordenLoad($(this));$('#home').hide();$('#orden').show();});
         $(document).hammer().on("tap", "#orden .left",function(){$('#home').show();$('#orden').hide();});

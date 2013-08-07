@@ -34,6 +34,33 @@ var serverFile='http://192.168.1.76/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
             }
         });
     }
+//Mostrar Mesas Abiertas
+    function showOpenedTables(){
+        $.ajax({
+            type: 'POST',
+            url: serverFile,
+            data: 'fnc=openedTables',
+            error: function(xhr, type){
+                alert('Ajax error!');
+            }
+        }).done(function(tables){
+            tables=JSON.parse(tables);
+            for(i=0;i<tables.length;i++){
+                //checar si existe la mesa en la lista
+                var b=0;
+                $('#tables li').each(function(){
+                    if($(this).attr('id')=='tab'+tables[i].mesaId)
+                        b=1;
+                });
+                if(b==0){
+                    clase = '';
+                    if(tables[i].stat==0)
+                        clase = 'class="pending"';
+                    $('#tables').append('<li id="tab'+tables[i].mesaId+'" '+clase+' orden="'+tables[i].ordenId+'">Mesa '+tables[i].mesaId+'</li>');
+                }
+            }
+        });
+    }
 //Abrir Mesas
     function openTable(id){
         //Crear Nueva Orden
