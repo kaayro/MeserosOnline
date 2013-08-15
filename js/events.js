@@ -1,4 +1,4 @@
-function ordenLoad(obj){
+function ordenLoad(obj,){
     //asignar ordenId a pantalla de orden
     $('#orden').attr('orden',obj.attr('orden')).attr('mesa',(obj.attr('id')).substr(3));
     //Limpiar pantalla de orden
@@ -42,4 +42,10 @@ function putPedidoEntregado(id,des,pr){
         tot+=parseFloat($(this).find('.precio').children('.costo').text());
     });
     $('#pedidos .tab .may .total').text('$ '+tot);
+}
+
+function selectNameOrder(obj){
+    navigator.notification.prompt("",function(res){
+        
+    },"tit","Aceptar");
 }
