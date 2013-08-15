@@ -1,4 +1,4 @@
-function ordenLoad(obj,){
+function ordenLoad(obj){
     //asignar ordenId a pantalla de orden
     $('#orden').attr('orden',obj.attr('orden')).attr('mesa',(obj.attr('id')).substr(3));
     //Limpiar pantalla de orden
