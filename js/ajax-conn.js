@@ -1,7 +1,6 @@
 var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
 //Mostrar Meseros
     function showMeseros(){
-        alert();
         $.ajax({
             type: 'POST',
             url: serverFile,
@@ -10,7 +9,6 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 alert('Ajax error!');
             }
         }).done(function(meseros){
-            alert('0');
             meseros=JSON.parse(meseros);
             for(i=0;i<meseros.length;i++){
                 $('#meseros ul').append('<li class="opt" rel="'+meseros[i].meseroId+'">'+meseros[i].Nombre+'</li>');
@@ -47,20 +45,29 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
             }
         }).done(function(tables){
             tables=JSON.parse(tables);
-            for(i=0;i<tables.length;i++){
+            for(i=0;i<tables.length;i++){//Listar
                 //checar si existe la mesa en la lista
                 var b=0;
                 $('#tables li').each(function(){
                     if($(this).attr('id')=='tab'+tables[i].mesaId)
                         b=1;
                 });
-                if(b==0){
+                if(b==0){//Obtenemos mesas abiertas sin listar
                     clase = '';
                     if(tables[i].stat==0)
                         clase = 'class="pending"';
                     $('#tables').append('<li id="tab'+tables[i].mesaId+'" '+clase+' orden="'+tables[i].ordenId+'">Mesa '+tables[i].mesaId+'</li>');
                 }
             }
+            $('#tables li').each(function(){//Deslistar
+                var s=0;
+                for(i=0;i<tables.length;i++){
+                    if($(this).attr('id')=='tab'+tables[i].mesaId)
+                        s=1;
+                }
+                if(s==0)
+                    $(this).remove();
+            });
         });
     }
 //Abrir Mesas

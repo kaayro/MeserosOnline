@@ -1,7 +1,6 @@
 $(function(){
     document.addEventListener("deviceready",function(){
         /* Seleccionar Meseros */
-        alert('1');
         showMeseros();
         $(document).hammer().on('tap','#meseros .opt',function(){$('body').attr('mesero',$(this).attr('rel'));$('#meseros').hide();$('#options').append('<li>'+$(this).text()+' está atendiendo en este Dispositivo</li>');});
         /* Mesas y Ordenes */
