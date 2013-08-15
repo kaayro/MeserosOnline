@@ -84,7 +84,7 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                     }
                 }).done(function(orden){
                     if(orden>0){
-                        $('#tables').append('<li id="tab'+id+'" orden="'+orden+'">Mesa '+id+'</li>');
+                        $('#tables').append('<li id="tab'+id+'" orden="'+orden+'" class="opt">Mesa '+id+'</li>');
                     }
                 });
             }
@@ -179,4 +179,14 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 navigator.notification.alert('Error al cerrar la Mesa',null,'Error','Aceptar');
             }
         });
+    }
+//Eliminar Pedidos
+    function delPedidos(obj){
+        id = parseInt(obj.attr('id').substr(4));
+        navigator.notification.confirm(id+' - '+obj.text(),function(btn){
+            if(btn==1){
+                alert();
+            }
+        },'Precaución','Eliminar,Cancelar');
+        }
     }
