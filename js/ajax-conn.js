@@ -74,19 +74,21 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
     function openTable(id){
         //Crear Nueva Orden
         navigator.notification.prompt('A nombre de:',function(results){
-            $.ajax({
-                type: 'POST',
-                url: serverFile,
-                data: 'fnc=openTable&id='+id+'&nom='+results.input1,
-                error: function(xhr, type){
-                    alert('Ajax error!');
-                }
-            }).done(function(orden){
-                if(orden>0){
-                    $('#tables').append('<li id="tab'+id+'" orden="'+orden+'">Mesa '+id+'</li>');
-                }
-            });
-        },'Orden',['Aceptar','Cancelar'],'Anónimo');
+            if(results.buttonIndex==0){
+                $.ajax({
+                    type: 'POST',
+                    url: serverFile,
+                    data: 'fnc=openTable&id='+id+'&nom='+results.input1,
+                    error: function(xhr, type){
+                        alert('Ajax error!');
+                    }
+                }).done(function(orden){
+                    if(orden>0){
+                        $('#tables').append('<li id="tab'+id+'" orden="'+orden+'">Mesa '+id+'</li>');
+                    }
+                });
+            }
+        },'Orden',['Aceptar','Cancelar'],'Anonimo');
     }
 //Obtener Pedidos de la Orden
     function getPedidosOrden(oId){
