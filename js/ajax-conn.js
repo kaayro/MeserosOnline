@@ -188,5 +188,4 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 alert();
             }
         },'Precaución','Eliminar,Cancelar');
-        }
     }
