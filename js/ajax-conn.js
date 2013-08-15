@@ -182,7 +182,7 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
     }
 //Eliminar Pedidos
     function delPedidos(obj){
-        id = parseInt(obj.attr('id').substr(4));
+        id = parseInt(obj.attr('pedido'));
         navigator.notification.confirm('¿Desea borrar '+obj.text()+'?',function(btn){
             if(btn==1){
                 $.ajax({
