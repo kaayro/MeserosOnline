@@ -74,7 +74,7 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
     function openTable(id){
         //Crear Nueva Orden
         navigator.notification.prompt('A nombre de:',function(results){
-            if(results.buttonIndex==0){
+            if(results.buttonIndex==1){
                 $.ajax({
                     type: 'POST',
                     url: serverFile,
