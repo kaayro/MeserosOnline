@@ -183,9 +183,22 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
 //Eliminar Pedidos
     function delPedidos(obj){
         id = parseInt(obj.attr('id').substr(4));
-        navigator.notification.confirm(id+' - '+obj.text(),function(btn){
+        navigator.notification.confirm('¿Desea borrar '+obj.text()+'?',function(btn){
             if(btn==1){
-                alert();
+                $.ajax({
+                    type: 'POST',
+                    url: serverFile,
+                    data: 'fnc=delPedidos&pid='+id,
+                    error: function(xhr, type){
+                        alert('Ajax error!');
+                    }
+                }).done(function(done){
+                    if(done==1){
+                        obj.remove();
+                    }else{
+                        navigator.notification.alert('Error al eliminar el producto',null,'Error','Aceptar');
+                    }
+                });
             }
         },'Precaución','Eliminar,Cancelar');
     }
