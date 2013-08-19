@@ -181,8 +181,8 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 alert('Ajax error!');
             }
         }).done(function(done){
-            //alert(done);
-            done = JSON.parse(done);
+            alert(done);
+            /*done = JSON.parse(done);
                 extras = $('#extras');
                 extras.attr('pedido',pedidoId);
                 extras.attr('producto',prodId);
@@ -194,7 +194,7 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                     $('#extra'+done.one[j].ingrId+' .count').text(done.one[j].cantidad);
                 }
                 extras.show();
-        });
+        });*/
     }
 
 //Entregar Pedido
