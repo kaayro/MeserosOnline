@@ -153,7 +153,7 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
         $.ajax({
             type: 'POST',
             url: serverFile,
-            data: 'fnc=showExtras&pid='+prodId,
+            data: 'fnc=getExtras&pid='+prodId,
             error: function(xhr, type){
                 alert('Ajax error!');
             }
