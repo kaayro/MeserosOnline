@@ -221,7 +221,7 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
         },'Precaución','Eliminar,Cancelar');
     }
 //Seleccionar Extras de Tlayudas
-selectExtras(pedidoId,prodId){
+function selectExtras(pedidoId,prodId){
     $.ajax({
         type: 'POST',
         url: serverFile,
