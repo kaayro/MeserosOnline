@@ -18,5 +18,10 @@ $(function(){
         $(document).hammer().on('tap','#btnClose',function(){closeTable();});
         //Eliminar Pedidos
         $(document).hammer().on('hold','#pendientes .body ul li',function(){delPedidos($(this));});
+        $(document).hammer().on('hold','#extras .ingrs li',function(){quitIngr($(this));});
+        $(document).hammer().on('tap','#extras .ingrs li',function(){addIngr($(this));});
+        $(document).hammer().on('tap','#extras .submit',function(){sendExtras($('#extras'));});
+        $(document).hammer().on('tap','#extras .cancel',function(){$('#extras').hide();});
+        
     },false);
 });

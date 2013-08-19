@@ -159,9 +159,10 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
             }
         }).done(function(done){
             done = JSON.parse(done);
-            //if(done.length>0){
                 extras = $('#extras');
                 extras.attr('pedido',pedidoId);
+                extras.attr('producto',prodId);
+                extras.find('ul.ingrs').html('');
                 for(i=0;i<done.all.length;i++){//Listar Todos los Ingredientes
                     extras.find('ul.ingrs').append('<li id="extra'+done.all[i].ingrId+'" ingr="'+done.all[i].ingrId+'"><span class="count">0</span>'+done.all[i].ingrediente+'</li>');
                 }
@@ -169,10 +170,6 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                     $('#extra'+done.one[j].ingrId+' .count').text(done.one[j].cantidad);
                 }
                 extras.show();
-                
-            /*}else{
-                navigator.notification.alert('Error al Solicitar Extras',null,'Error','Aceptar');
-            }*/
         });
     }
 
@@ -235,8 +232,22 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
         },'Precaución','Eliminar,Cancelar');
     }
 //Seleccionar Extras de Tlayudas
-/*function selectExtras(pedidoId,prodId){
-    $.ajax({
+function sendExtras(extras){
+    var pedidoId=extras.attr('pedido');
+    var prodId = extras.attr('producto');
+    var cant = '';
+    var ingr = '';
+    extras.find('.ingrs li').each(function(i){
+        if(i==0){
+            cant+=$(this).find('.count').text();
+            ingr+=$(this).attr('ingr');
+        }else{
+            cant+=$(this).find('.count').text()+',';
+            ingr+=$(this).attr('ingr')+',';
+        }
+        alert(cant+'\n'+ingr);
+    });
+    /*$.ajax({
         type: 'POST',
         url: serverFile,
         data: 'fnc=getExtras&pid='+prodId,
@@ -249,5 +260,5 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
         }else{
             navigator.notification.alert('Error al eliminar el producto',null,'Error','Aceptar');
         }
-    });
-}*/
+    });*/
+}

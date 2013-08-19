@@ -50,3 +50,12 @@ function selectNameOrder(obj){
         
     },"tit","Aceptar");
 }
+function quitIngr(obj){
+    var cantidad = obj.find('.count');
+    cantidad.text(parseInt(cantidad.text())-1);
+}
+
+function addIngr(obj){
+    var cantidad = obj.find('.count');
+    cantidad.text(parseInt(cantidad.text())+1);
+}
