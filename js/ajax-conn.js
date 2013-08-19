@@ -1,4 +1,4 @@
-var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
+var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
 //Mostrar Meseros
     function showMeseros(){
         $.ajax({
