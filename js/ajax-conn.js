@@ -158,7 +158,20 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 alert('Ajax error!');
             }
         }).done(function(done){
-            alert(done);
+            done = JSON.parse(done);
+            if(done.length>1){
+                extras = $('#extras');
+                extras.attr('pedido',pedidoId);
+                for(i=0;i<done.all.length;i++){//Listar Todos los Ingredientes
+                    extras.find('ul.ingrs').append('<li id="extra'+done.all[i].ingrId+'" ingr="'+done.all[i].ingrId+'"><span class="count">0</span>'+done.all[i].ingrediente+'</li>');
+                }
+                for(j=0;j<done.one.length;j++){
+                    $('#extra'+done.one[j].ingrId+' .count').text(done.one[j].cantidad);
+                }
+                
+            }else{
+                navigator.notification.alert('Error al Solicitar Extras',null,'Error','Aceptar');
+            }
         });
     }
 
