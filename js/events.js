@@ -52,7 +52,8 @@ function selectNameOrder(obj){
 }
 function quitIngr(obj){
     var cantidad = obj.find('.count');
-    cantidad.text(parseInt(cantidad.text())-1);
+    if(parseInt(cantidad.text())>0)
+        cantidad.text(parseInt(cantidad.text())-1);
 }
 
 function addIngr(obj){

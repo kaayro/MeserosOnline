@@ -242,8 +242,8 @@ function sendExtras(extras){
             cant+=$(this).find('.count').text();
             ingr+=$(this).attr('ingr');
         }else{
-            cant+=$(this).find('.count').text()+',';
-            ingr+=$(this).attr('ingr')+',';
+            cant+=','+$(this).find('.count').text();
+            ingr+=','+$(this).attr('ingr');
         }
         alert(cant+'\n'+ingr);
     });
