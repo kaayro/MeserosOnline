@@ -168,6 +168,7 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 for(j=0;j<done.one.length;j++){
                     $('#extra'+done.one[j].ingrId+' .count').text(done.one[j].cantidad);
                 }
+                extras.show();
                 
             /*}else{
                 navigator.notification.alert('Error al Solicitar Extras',null,'Error','Aceptar');
