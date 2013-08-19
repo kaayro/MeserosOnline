@@ -138,12 +138,30 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
         }).done(function(done){
             if(done>0){
                 putPedidoPendiente(done,obj.attr('rel'),obj.children('.des').text(),obj.children('.precio').text(),(obj.parent('ul').attr('class')).substr(4));
-                navigator.notification.alert('Ha Seleccionado: '+obj.children('.des').text(),null,'Satisfactorio','Aceptar');
+                navigator.notification.alert('Ha Seleccionado: '+obj.children('.des').text(),function(){
+                    if((obj.parent('ul').attr('class')).substr(4)==''){
+                        showExtras(done,obj.attr('rel'));
+                    }
+                },'Satisfactorio','Aceptar');
             }else{
                 navigator.notification.alert('Error al solicitar el Pedido '+done,null,'Error','Aceptar');
             }
         });
     }
+//Mostrar Ventana de Extras con Ingredientes
+    function showExtras(pedidoId,prodId){
+        $.ajax({
+            type: 'POST',
+            url: serverFile,
+            data: 'fnc=showExtras&pid='+prodId,
+            error: function(xhr, type){
+                alert('Ajax error!');
+            }
+        }).done(function(done){
+            alert(done);
+        });
+    }
+
 //Entregar Pedido
     function entregarPedido(obj){
         $.ajax({
@@ -202,3 +220,20 @@ var serverFile='http://192.168.1.70/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
             }
         },'Precaución','Eliminar,Cancelar');
     }
+//Seleccionar Extras de Tlayudas
+selectExtras(pedidoId,prodId){
+    $.ajax({
+        type: 'POST',
+        url: serverFile,
+        data: 'fnc=getExtras&pid='+prodId,
+        error: function(xhr, type){
+            alert('Ajax error!');
+        }
+    }).done(function(done){
+        if(done==1){
+            obj.remove();
+        }else{
+            navigator.notification.alert('Error al eliminar el producto',null,'Error','Aceptar');
+        }
+    });
+}

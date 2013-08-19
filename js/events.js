@@ -12,6 +12,7 @@ function ordenLoad(obj){
 
 function putPedidoPendiente(pedidoId,prodId,producto,precio,tipoId){
     if(tipoId==1){//Si es tlayuda
+        selectExtras(pedidoId,prodId);//Seleccionar Extras de Tlayudas
         $('<li class="pending" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
     }else{
         $('<li class="ready" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');
