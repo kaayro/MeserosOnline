@@ -17,6 +17,6 @@ $(function(){
         $(document).hammer().on('tap','#pendientes .body .ready',function(){entregarPedido($(this));});
         $(document).hammer().on('tap','#btnClose',function(){closeTable();});
         //Eliminar Pedidos
-        $(document).hammer().on('swipeleft','#pendientes .body ul li',function(){delPedidos($(this));});
+        $(document).hammer().on('hold','#pendientes .body ul li',function(){delPedidos($(this));});
     },false);
 });
