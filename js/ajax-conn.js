@@ -139,7 +139,7 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
             if(done>0){
                 putPedidoPendiente(done,obj.attr('rel'),obj.children('.des').text(),obj.children('.precio').text(),(obj.parent('ul').attr('class')).substr(4));
                 navigator.notification.alert('Ha Seleccionado: '+obj.children('.des').text(),function(){
-                    if((obj.parent('ul').attr('class')).substr(4)==''){
+                    if((obj.parent('ul').attr('class')).substr(4)==1){
                         showExtras(done,obj.attr('rel'));
                     }
                 },'Satisfactorio','Aceptar');
