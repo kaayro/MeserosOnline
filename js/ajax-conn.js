@@ -172,6 +172,29 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 extras.show();
         });
     }
+    function modExtras(pedidoId,prodId){
+        $.ajax({
+            type: 'POST',
+            url: serverFile,
+            data: 'fnc=modExtras&prid='+prodId+'&peid='+pedidoId,
+            error: function(xhr, type){
+                alert('Ajax error!');
+            }
+        }).done(function(done){
+            done = JSON.parse(done);
+                extras = $('#extras');
+                extras.attr('pedido',pedidoId);
+                extras.attr('producto',prodId);
+                extras.find('ul.ingrs').html('');
+                for(i=0;i<done.all.length;i++){//Listar Todos los Ingredientes
+                    extras.find('ul.ingrs').append('<li id="extra'+done.all[i].ingrId+'" ingr="'+done.all[i].ingrId+'"><span class="count">0</span>'+done.all[i].ingrediente+'</li>');
+                }
+                for(j=0;j<done.one.length;j++){
+                    $('#extra'+done.one[j].ingrId+' .count').text(done.one[j].cantidad);
+                }
+                extras.show();
+        });
+    }
 
 //Entregar Pedido
     function entregarPedido(obj){
@@ -212,7 +235,7 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
 //Eliminar Pedidos
     function delPedidos(obj){
         id = parseInt(obj.attr('pedido'));
-        navigator.notification.confirm('¿Desea borrar '+obj.text()+'?',function(btn){
+        navigator.notification.confirm('¿Qué desea hacer con '+obj.text()+'?',function(btn){
             if(btn==1){
                 $.ajax({
                     type: 'POST',
@@ -229,9 +252,12 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                     }
                 });
             }
-        },'Precaución','Eliminar,Cancelar');
+            if(btn==2){
+                modExtras(obj.attr('pedido'),(obj.attr('id')).substr(4));
+            }
+        },'Precaución','Eliminar,Modificar,Cancelar');
     }
-//Seleccionar Extras de Tlayudas
+//Enviar Extras de Tlayudas
 function sendExtras(extras){
     var pedidoId=extras.attr('pedido');
     var prodId = extras.attr('producto');
@@ -245,20 +271,20 @@ function sendExtras(extras){
             cant+=','+$(this).find('.count').text();
             ingr+=','+$(this).attr('ingr');
         }
-        alert(cant+'\n'+ingr);
     });
-    /*$.ajax({
+    $.ajax({
         type: 'POST',
         url: serverFile,
-        data: 'fnc=getExtras&pid='+prodId,
+        data: 'fnc=setExtras&prid='+prodId+'&peid='+pedidoId+'&cant='+cant+'&ingr='+ingr,
         error: function(xhr, type){
             alert('Ajax error!');
         }
     }).done(function(done){
-        if(done==1){
-            obj.remove();
+        alert(done);
+        /*if(done==1){
+            $('#extras').hide();
         }else{
-            navigator.notification.alert('Error al eliminar el producto',null,'Error','Aceptar');
-        }
-    });*/
+            navigator.notification.alert('Error al asignar extras en el pedido, ¡Intenta de nuevo!',null,'Error','Aceptar');
+        }*/
+    });
 }
