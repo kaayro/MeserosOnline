@@ -1,4 +1,4 @@
-var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
+var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
 //Mostrar Meseros
     function showMeseros(){
         $.ajax({
@@ -193,8 +193,8 @@ var serverFile='http://192.168.1.65/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 for(j=0;j<done.one.length;j++){
                     $('#extra'+done.one[j].ingrId+' .count').text(done.one[j].cantidad);
                 }
-                extras.show();
-        });*/
+                extras.show();*/
+        });
     }
 
 //Entregar Pedido
