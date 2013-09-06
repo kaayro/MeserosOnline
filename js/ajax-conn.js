@@ -306,12 +306,40 @@ function tlayudasReady(){
 			navigator.notification.vibrate(500);
 			navigator.notification.confirm(done[i].mesaId,function(btn){
 				if(btn==1){
-					alert('Confirmada');
+					tlayudasConfirmada(done[i].pedidoId);
 				}else{
-					alert('Rechazada');
+					tlayudasRechazada(done[i].tlaId);
 				}
 			},done[i].producto,'Confirmar,Rechazar');
 		}
 		alert(done.length);
+    });
+}
+//Tlayudas Rechazada
+function tlayudasRechazada(tId){
+	$.ajax({
+        type: 'POST',
+        url: serverFile,
+        data: 'fnc=setTlayudasRechazada&tid='+tId,
+        error: function(xhr, type){
+            alert('Ajax error!');
+        }
+    }).done(function(done){
+        if(done==0)
+			alert('Error al Rechazar la Tlayuda');
+    });
+}
+//Tlayudas Confirmada
+function tlayudasConfirmada(pId){
+	$.ajax({
+        type: 'POST',
+        url: serverFile,
+        data: 'fnc=setTlayudasConfirmada&pid='+pId,
+        error: function(xhr, type){
+            alert('Ajax error!');
+        }
+    }).done(function(done){
+        if(done==0)
+			alert('Error al Confirmar la Tlayuda');
     });
 }
