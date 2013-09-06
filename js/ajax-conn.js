@@ -291,7 +291,7 @@ function sendExtras(extras){
 }
 
 //Tlayudas Listas
-function tlayudasReady(){
+function tlayudasReady(listenerTlayudasReady){
 	$.ajax({
         type: 'POST',
         url: serverFile,
@@ -302,6 +302,7 @@ function tlayudasReady(){
     }).done(function(done){
         done = JSON.parse(done);
 		for(i=0;i<done.length;i++){
+			window.clearInterval(listenerTlayudasReady);
 			navigator.notification.beep(1);
 			navigator.notification.vibrate(500);
 			navigator.notification.confirm(done[i].mesaId,function(btn){
