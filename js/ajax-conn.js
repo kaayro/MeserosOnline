@@ -311,13 +311,15 @@ function tlayudasReady(listenerTlayudasReady){
 				}else{
 					tlayudasRechazada(done[i].tlaId);
 				}
+				listenerTlayudasReady = setInterval(function(){tlayudasReady(listenerTlayudasReady);},1000);
 			},done[i].producto,'Confirmar,Rechazar');
 		}
     });
 }
 //Tlayudas Rechazada
 function tlayudasRechazada(tId){
-	$.ajax({
+	alert(tId);
+	/*$.ajax({
         type: 'POST',
         url: serverFile,
         data: 'fnc=setTlayudasRechazada&tid='+tId,
@@ -328,7 +330,7 @@ function tlayudasRechazada(tId){
 		alert(done);
         if(done==0)
 			alert('Error al Rechazar la Tlayuda');
-    });
+    });*/
 }
 //Tlayudas Confirmada
 function tlayudasConfirmada(pId){
