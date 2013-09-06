@@ -300,7 +300,7 @@ function tlayudasReady(){
             alert('Ajax error!');
         }
     }).done(function(done){
-        alert(done);
-        //done = JSON.parse(done);
+        done = JSON.parse(done);
+		alert(done.length);
     });
 }
