@@ -312,7 +312,6 @@ function tlayudasReady(){
 				}
 			},done[i].producto,'Confirmar,Rechazar');
 		}
-		alert(done.length);
     });
 }
 //Tlayudas Rechazada
