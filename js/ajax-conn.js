@@ -281,11 +281,26 @@ function sendExtras(extras){
             alert('Ajax error!');
         }
     }).done(function(done){
-        alert(done);
-        /*if(done==1){
+        //alert(done);
+        if(done==1){
             $('#extras').hide();
         }else{
             navigator.notification.alert('Error al asignar extras en el pedido, ¡Intenta de nuevo!',null,'Error','Aceptar');
-        }*/
+        }
+    });
+}
+
+//Tlayudas Listas
+function tlayudasReady(){
+	$.ajax({
+        type: 'POST',
+        url: serverFile,
+        data: 'fnc=getTlayudasReady',
+        error: function(xhr, type){
+            alert('Ajax error!');
+        }
+    }).done(function(done){
+        alert(done);
+        //done = JSON.parse(done);
     });
 }
