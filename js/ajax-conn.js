@@ -325,6 +325,7 @@ function tlayudasRechazada(tId){
             alert('Ajax error!');
         }
     }).done(function(done){
+		alert(done);
         if(done==0)
 			alert('Error al Rechazar la Tlayuda');
     });
@@ -339,6 +340,7 @@ function tlayudasConfirmada(pId){
             alert('Ajax error!');
         }
     }).done(function(done){
+		alert(done);
         if(done==0)
 			alert('Error al Confirmar la Tlayuda');
     });
