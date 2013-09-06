@@ -301,6 +301,17 @@ function tlayudasReady(){
         }
     }).done(function(done){
         done = JSON.parse(done);
+		for(i=0;i<done.length;i++){
+			navigator.notification.beep(1);
+			navigator.notification.vibrate(500);
+			navigator.notification.confirm(done[i].mesaId,function(btn){
+				if(btn==1){
+					alert('Confirmada');
+				}else{
+					alert('Rechazada');
+				}
+			},done[i].producto,'Confirmar,Rechazar');
+		}
 		alert(done.length);
     });
 }
