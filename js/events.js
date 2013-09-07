@@ -12,7 +12,7 @@ function ordenLoad(obj){
 
 function putPedidoPendiente(pedidoId,prodId,producto,precio,tipoId){
     if(tipoId==1){//Si es tlayuda
-        tlayudasConfirmada(pedidoId);
+        tlayudasConfirmada(pedidoId,prodId,precio,producto);
     }else{
         $('<li class="ready" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');
     }

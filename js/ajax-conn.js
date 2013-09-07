@@ -331,7 +331,7 @@ function tlayudasRechazada(tId){
     });
 }
 //Tlayudas Confirmada
-function tlayudasConfirmada(pId){
+function tlayudasConfirmada(pId,prodId,precio,producto){
 	$.ajax({
         type: 'POST',
         url: serverFile,
@@ -342,8 +342,8 @@ function tlayudasConfirmada(pId){
     }).done(function(done){
 		alert("Done: "+done);
         if(done==1)
-			$('<li class="ready" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
+			$('<li class="ready" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
 		else
-			$('<li class="pending" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
+			$('<li class="pending" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
 	});
 }
