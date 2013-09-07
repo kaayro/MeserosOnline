@@ -307,7 +307,7 @@ function tlayudasReady(listenerTlayudasReady){
 			navigator.notification.vibrate(500);
 			navigator.notification.confirm(done[i].mesaId,function(btn){
 				if(btn==1){
-					tlayudasConfirmada(done[i].pedidoId);
+					//ok
 				}else{
 					tlayudasRechazada(done[i].tlaId);
 				}
@@ -318,8 +318,7 @@ function tlayudasReady(listenerTlayudasReady){
 }
 //Tlayudas Rechazada
 function tlayudasRechazada(tId){
-	alert(tId);
-	/*$.ajax({
+	$.ajax({
         type: 'POST',
         url: serverFile,
         data: 'fnc=setTlayudasRechazada&tid='+tId,
@@ -327,10 +326,9 @@ function tlayudasRechazada(tId){
             alert('Ajax error!');
         }
     }).done(function(done){
-		alert(done);
         if(done==0)
 			alert('Error al Rechazar la Tlayuda');
-    });*/
+    });
 }
 //Tlayudas Confirmada
 function tlayudasConfirmada(pId){
@@ -342,8 +340,9 @@ function tlayudasConfirmada(pId){
             alert('Ajax error!');
         }
     }).done(function(done){
-		alert(done);
-        if(done==0)
-			alert('Error al Confirmar la Tlayuda');
+        if(done==1)
+			$('<li class="ready" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
+		else
+			$('<li class="pending" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
     });
 }
