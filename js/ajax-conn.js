@@ -335,16 +335,14 @@ function tlayudasConfirmada(pId){
 	$.ajax({
         type: 'POST',
         url: serverFile,
-        data: 'fnc=setTlayudasConfirmada&pid='+pId,
+        data: 'fnc=getTlayudasConfirmada&pid='+pId,
         error: function(xhr, type){
             alert('Ajax error!');
         }
     }).done(function(done){
-		alert(done);
-        /*if(done==1)
+        if(done==1)
 			$('<li class="ready" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
 		else
 			$('<li class="pending" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pedidoId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
-		*/
 	});
 }
