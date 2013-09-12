@@ -341,7 +341,7 @@ function tlayudasConfirmada(pId,prodId,precio,producto){
         }
     }).done(function(done){
 		alert("Done: "+done);
-        if(done==1)
+        if(done!=0)
 			$('<li class="ready" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
 		else
 			$('<li class="pending" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
