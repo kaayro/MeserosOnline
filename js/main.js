@@ -6,7 +6,7 @@ $(function(){
         /* Mesas y Ordenes */
         var listenerShowTables = setInterval(function(){showTables();},1500);
         var listenerShowOpenedTables = setInterval(function(){showOpenedTables();},1000);
-		var listenerTlayudasReady = setInterval(function(){tlayudasReady(listenerTlayudasReady);},1000);
+		//var listenerTlayudasReady = setInterval(function(){tlayudasReady(listenerTlayudasReady);},1000);
         $('#options select').change(function(){openTable($(this).val())});
         $(document).hammer().on("tap", "#tables .opt,#tables .alert",function(){ordenLoad($(this));$('#home').hide();$('#orden').show();});
         $(document).hammer().on("tap", "#orden .left",function(){$('#home').show();$('#orden').hide();});

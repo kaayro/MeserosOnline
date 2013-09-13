@@ -340,7 +340,6 @@ function tlayudasConfirmada(pId,prodId,precio,producto){
             alert('Ajax error!');
         }
     }).done(function(done){
-		//alert("Done: "+done);
         if(done!=0)
 			$('<li class="ready" id="pend'+prodId+'" precio="'+precio+'" pedido="'+pId+'">'+producto+'</li>').appendTo('#pendientes .body ul');//Verificar tlayudaReady()
 		else
