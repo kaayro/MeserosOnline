@@ -159,17 +159,17 @@ var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
             }
         }).done(function(done){
             done = JSON.parse(done);
-                extras = $('#extras');
-                extras.attr('pedido',pedidoId);
-                extras.attr('producto',prodId);
-                extras.find('ul.ingrs').html('');
-                for(i=0;i<done.all.length;i++){//Listar Todos los Ingredientes
-                    extras.find('ul.ingrs').append('<li id="extra'+done.all[i].ingrId+'" ingr="'+done.all[i].ingrId+'"><span class="count">0</span>'+done.all[i].ingrediente+'</li>');
-                }
-                for(j=0;j<done.one.length;j++){
-                    $('#extra'+done.one[j].ingrId+' .count').text(done.one[j].cantidad);
-                }
-                extras.show();
+            extras = $('#extras');
+            extras.attr('pedido',pedidoId);
+            extras.attr('producto',prodId);
+            extras.find('ul.ingrs').html('');
+            for(i=0;i<done.all.length;i++){//Listar Todos los Ingredientes
+                extras.find('ul.ingrs').append('<li id="extra'+done.all[i].ingrId+'" ingr="'+done.all[i].ingrId+'"><span class="count">0</span>'+done.all[i].ingrediente+'</li>');
+            }
+            for(j=0;j<done.one.length;j++){
+                $('#extra'+done.one[j].ingrId+' .count').text(done.one[j].cantidad);
+            }
+            extras.show();
         });
     }
     function modExtras(pedidoId,prodId){
