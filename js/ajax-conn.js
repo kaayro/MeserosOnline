@@ -57,7 +57,7 @@ var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
 							}
 						}
 						if(tables[i].stat==null){
-							navigator.notification.vibrate(500);
+							$(this).removeClass('alert');
 						}
                         b=1;
 					}
