@@ -49,8 +49,12 @@ var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 //checar si existe la mesa en la lista
                 var b=0;
                 $('#tables li').each(function(){
-                    if($(this).attr('id')=='tab'+tables[i].mesaId)
+                    if($(this).attr('id')=='tab'+tables[i].mesaId){
+						if(tables[i].stat==1)
+							if(!($(this).hasClass('alert')))
+								navigator.notification.vibrate(500);
                         b=1;
+					}
                 });
                 if(b==0){//Obtenemos mesas abiertas sin listar
                     clase = 'class="opt"';
