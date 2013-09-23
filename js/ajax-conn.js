@@ -50,9 +50,15 @@ var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                 var b=0;
                 $('#tables li').each(function(){
                     if($(this).attr('id')=='tab'+tables[i].mesaId){
-						if(tables[i].stat==1)
-							if(!($(this).hasClass('alert')))
+						if(tables[i].stat==1){
+							if(!($(this).hasClass('alert'))){
 								navigator.notification.vibrate(500);
+								$(this).addClass('alert');
+							}
+						}
+						if(tables[i].stat==null){
+							navigator.notification.vibrate(500);
+						}
                         b=1;
 					}
                 });
