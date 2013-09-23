@@ -56,6 +56,8 @@ var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
                     clase = 'class="opt"';
                     if(tables[i].stat==0)
                         clase = 'class="pending"';
+					if(tables[i].stat==1)
+						clase = 'class="alert"';
                     $('#tables').append('<li id="tab'+tables[i].mesaId+'" '+clase+' orden="'+tables[i].ordenId+'">Mesa '+tables[i].mesaId+'</li>');
                 }
             }
